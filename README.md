@@ -19,8 +19,11 @@ this.adapter.MoveFirst();
 
 private void adapter_PageChanged(object sender, PageChangedEventArgs e)
 {
-  DataTable dataTable = this.adapter.GetPage(this.adapter.CurrentPage);   // DataTable to hold all of this page's data
-  this.dataGridView.DataSource = dataTable.AsDataView();                  // Display the dats in the DataGridView
+  // DataTable to hold all of this page's data
+  DataTable dataTable = this.adapter.GetPage(this.adapter.CurrentPage);
+  
+  // Display the dats in the DataGridView
+  this.dataGridView.DataSource = dataTable.AsDataView();
   
   bool hasNext = this.adapter.HasNext;        // Check if there is another page after this one
   bool hasPrev = this.adapter.HasPrevious;    // Check if there is a page before this one
