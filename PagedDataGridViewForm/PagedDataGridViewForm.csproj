@@ -51,9 +51,6 @@
       <DependentUpon>ExampleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PageChangedEventHandler.cs" />
-    <Compile Include="PagedDataGridView.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="PagedDataGridViewAdapter.cs" />
     <Compile Include="PagedDataGridViewAdapterException.cs" />
     <Compile Include="Program.cs" />
