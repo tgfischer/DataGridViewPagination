@@ -41,7 +41,7 @@ namespace DataGridViewPagination
                 dataTable.Columns.Add(i.ToString());
             }
 
-            for (int i = 0; i < 99955; i++)              // Add 9955 rows
+            for (int i = 0; i < 9995; i++)              // Add 9955 rows
             {
                 DataRow row = dataTable.NewRow();
 
@@ -135,27 +135,14 @@ namespace DataGridViewPagination
             this.dataGridView.DataSource = dataTable.AsDataView();                  // Display the dats in the DataGridView
             this.currentPageTextBox.Text = this.adapter.CurrentPage + 1 + "";       // Sets the current page number in the text box
 
-            if (!this.adapter.HasNext)                  // Disable the next/last buttons if there are no more pages
-            {
-                this.nextButton.Enabled = false;
-                this.lastButton.Enabled = false;
-            }
-            else
-            {
-                this.nextButton.Enabled = true;
-                this.lastButton.Enabled = true;
-            }
+            bool hasNext = this.adapter.HasNext;        // Check if there is another page after this one
+            bool hasPrev = this.adapter.HasPrevious;    // Check if there is a page before this one
 
-            if (!this.adapter.HasPrevious)              // Disable the previous/first buttons if there are no pages before the current
-            {
-                this.previousButton.Enabled = false;
-                this.firstButton.Enabled = false;
-            }
-            else
-            {
-                this.previousButton.Enabled = true;
-                this.firstButton.Enabled = true;
-            }
+            // Enable/disable the buttons depending on the page number
+            this.nextButton.Enabled = hasNext;
+            this.lastButton.Enabled = hasNext;
+            this.previousButton.Enabled = hasPrev;
+            this.firstButton.Enabled = hasPrev;
         }
 
         /// <summary>
