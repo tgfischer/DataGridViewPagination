@@ -115,7 +115,7 @@ namespace DataGridViewPagination
         {
             int newPage = 0;
 
-            if (!Int32.TryParse(n, out newPage))            // Saves the page number as an integer if it can
+            if (!Int32.TryParse(n, out newPage))      // Saves the page number as an integer if it can
                 throw new DataGridViewPaginationAdapterException("The inputted value is invalid");
 
             return this.MoveTo(--newPage);
@@ -133,7 +133,7 @@ namespace DataGridViewPagination
             else
                 throw new DataGridViewPaginationAdapterException("The inputted value is out of range");
 
-            if (this.PageChanged != null)                   // Make sure the event exists
+            if (this.PageChanged != null)             // Make sure the event exists
             {
                 // Run this event
                 this.PageChanged(this, new PageChangedEventArgs(_page));

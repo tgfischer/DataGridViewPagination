@@ -38,16 +38,16 @@ namespace DataGridViewPagination
 
             for (int i = 0; i < 5; i++)                 // Add 5 columns
             {
-                dataTable.Columns.Add(i.ToString());
+                dataTable.Columns.Add(i.ToString());    // Add the number to the list of columns in the DataTable
             }
 
             for (int i = 0; i < 9995; i++)              // Add 9955 rows
             {
-                DataRow row = dataTable.NewRow();
+                DataRow row = dataTable.NewRow();       // Create a new row that will belong to this DataTable
 
                 for (int j = 0; j < 5; j++)             // Iterate through each column
                 {
-                    row[j.ToString()] = i;
+                    row[j.ToString()] = i;              // Add the same number to each column
                 }
 
                 dataTable.Rows.Add(row);                // Add the row to the table
