@@ -107,21 +107,29 @@ namespace DataGridViewPagination
         }
 
         /// <summary>
-        /// Moves to the speicifed pole number
+        /// Moves to the specified page number
         /// </summary>
-        /// <param name="n">The pole number directly from the text box</param>
+        /// <param name="n">The page number directly from the text box</param>
         /// <returns>Returns whether or not the adapter moved to the specified record</returns>
         public bool MoveTo(string n) 
         {
             int newPage = 0;
 
-            if (!Int32.TryParse(n, out newPage))            // Saves the pole number as an integer if it can
+            if (!Int32.TryParse(n, out newPage))            // Saves the page number as an integer if it can
                 throw new DataGridViewPaginationAdapterException("The inputted value is invalid");
 
-            newPage--;
+            return this.MoveTo(--newPage);
+        }
 
-            if (newPage > -1 && newPage < this.TotalPages)
-                _page = newPage;                            // Set the adapter to the specified record
+        /// <summary>
+        /// Moves to the specified page number
+        /// </summary>
+        /// <param name="n">The page number</param>
+        /// <returns>Returns whether or not the adapter moved to the specified record</returns>
+        public bool MoveTo(int n)
+        {
+            if (n > -1 && n < this.TotalPages)
+                _page = n;                            // Set the adapter to the specified record
             else
                 throw new DataGridViewPaginationAdapterException("The inputted value is out of range");
 
