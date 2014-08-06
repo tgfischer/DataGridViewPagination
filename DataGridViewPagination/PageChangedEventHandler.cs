@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PagedDataGridViewForm
+namespace DataGridViewPagination
 {
     public delegate void PageChangedEventHandler(object sender, PageChangedEventArgs e);
 

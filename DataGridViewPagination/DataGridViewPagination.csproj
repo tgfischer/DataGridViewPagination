@@ -7,8 +7,8 @@
     <ProjectGuid>{C2289417-78EC-4B57-9DBA-520C6F164A15}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PagedDataGridViewForm</RootNamespace>
-    <AssemblyName>PagedDataGridViewForm</AssemblyName>
+    <RootNamespace>DataGridViewPagination</RootNamespace>
+    <AssemblyName>DataGridViewPagination</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>DataGridViewPagination.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,8 +54,8 @@
       <DependentUpon>ExampleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PageChangedEventHandler.cs" />
-    <Compile Include="PagedDataGridViewAdapter.cs" />
-    <Compile Include="PagedDataGridViewAdapterException.cs" />
+    <Compile Include="DataGridViewPaginationAdapter.cs" />
+    <Compile Include="DataGridViewPaginationAdapterException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ExampleForm.resx">
@@ -66,6 +69,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

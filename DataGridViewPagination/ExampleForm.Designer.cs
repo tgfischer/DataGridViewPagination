@@ -1,4 +1,4 @@
-﻿namespace PagedDataGridViewForm
+﻿namespace DataGridViewPagination
 {
     partial class ExampleForm
     {

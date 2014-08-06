@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PagedDataGridViewForm
+namespace DataGridViewPagination
 {
     public partial class ExampleForm : Form
     {
@@ -20,7 +20,7 @@ namespace PagedDataGridViewForm
             this.dataGridView.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(this.DataBindingComplete);
             this.currentPageTextBox.KeyDown += new KeyEventHandler(this.currentPageTextBox_KeyDown);
 
-            this.adapter = new PagedDataGridViewAdapter(this.GenerateDataTable());              // Sets up an adapter for the test data
+            this.adapter = new DataGridViewPaginationAdapter(this.GenerateDataTable());              // Sets up an adapter for the test data
             this.adapter.PageChanged += new PageChangedEventHandler(this.adapter_PageChanged);  // Event when the page changes
             this.adapter.MoveFirst();                       // Move to the first page
 
@@ -110,7 +110,7 @@ namespace PagedDataGridViewForm
                 {
                     this.adapter.MoveTo(this.currentPageTextBox.Text);  // Move to the desired page
                 }
-                catch (PagedDataGridViewAdapterException ex)
+                catch (DataGridViewPaginationAdapterException ex)
                 {
                     MessageBox.Show(ex.Message);
 
@@ -177,6 +177,6 @@ namespace PagedDataGridViewForm
             this.dataGridView.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
         }
 
-        private PagedDataGridViewAdapter adapter;   // Manages the pagination
+        private DataGridViewPaginationAdapter adapter;   // Manages the pagination
     }
 }

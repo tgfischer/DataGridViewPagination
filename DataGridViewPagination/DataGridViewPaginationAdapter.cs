@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Windows.Forms;
 
-namespace PagedDataGridViewForm
+namespace DataGridViewPagination
 {
-    class PagedDataGridViewAdapter
+    class DataGridViewPaginationAdapter
     {
-        public PagedDataGridViewAdapter(DataTable dataTable)
+        public DataGridViewPaginationAdapter(DataTable dataTable)
         {
             _dataTable = dataTable;
         }
@@ -116,14 +116,14 @@ namespace PagedDataGridViewForm
             int newPage = 0;
 
             if (!Int32.TryParse(n, out newPage))            // Saves the pole number as an integer if it can
-                throw new PagedDataGridViewAdapterException("The inputted value is invalid");
+                throw new DataGridViewPaginationAdapterException("The inputted value is invalid");
 
             newPage--;
 
             if (newPage > -1 && newPage < this.TotalPages)
                 _page = newPage;                            // Set the adapter to the specified record
             else
-                throw new PagedDataGridViewAdapterException("The inputted value is out of range");
+                throw new DataGridViewPaginationAdapterException("The inputted value is out of range");
 
             if (this.PageChanged != null)                   // Make sure the event exists
             {
