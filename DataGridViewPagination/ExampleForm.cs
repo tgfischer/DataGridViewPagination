@@ -24,7 +24,7 @@ namespace DataGridViewPagination
             this.adapter.PageChanged += new PageChangedEventHandler(this.adapter_PageChanged);  // Event when the page changes
             this.adapter.MoveFirst();                       // Move to the first page
 
-            this.maxPagesLabel.Text = "of " + adapter.MaximumPageSize;
+            this.maxPagesLabel.Text = "of " + adapter.TotalPages;
         }
 
         #region [ Generate Test Data ]
@@ -41,7 +41,7 @@ namespace DataGridViewPagination
                 dataTable.Columns.Add(i.ToString());
             }
 
-            for (int i = 0; i < 10000; i++)              // Add 9955 rows
+            for (int i = 0; i < 99955; i++)              // Add 9955 rows
             {
                 DataRow row = dataTable.NewRow();
 
