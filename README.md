@@ -62,4 +62,4 @@ private void firstButton_Click(object sender, EventArgs e)
 }
 ```
 
-I have also included an example of an editable ```TextBox``` that shows what page the user is on. This can be used to jump to another page. An example of a label that displays the total number of pages in the ```DataGridView``` is also shown.
+I have also included an example of an editable ```TextBox``` that shows what page the user is on. This can be used to jump to another page. I have also shown how to add a ```Label``` that displays the total number of pages in the ```DataGridView```
