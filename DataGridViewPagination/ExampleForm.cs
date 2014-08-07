@@ -20,7 +20,7 @@ namespace DataGridViewPagination
             this.dataGridView.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(this.DataBindingComplete);
             this.currentPageTextBox.KeyDown += new KeyEventHandler(this.currentPageTextBox_KeyDown);
 
-            this.adapter = new DataGridViewPaginationAdapter(this.GenerateDataTable());              // Sets up an adapter for the test data
+            this.adapter = new DataGridViewPaginationAdapter(this.GenerateDataTable());         // Sets up an adapter for the test data
             this.adapter.PageChanged += new PageChangedEventHandler(this.adapter_PageChanged);  // Event when the page changes
             this.adapter.MoveFirst();                       // Move to the first page
 

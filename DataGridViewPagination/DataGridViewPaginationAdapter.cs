@@ -13,6 +13,7 @@ namespace DataGridViewPagination
         public DataGridViewPaginationAdapter(DataTable dataTable)
         {
             _dataTable = dataTable;
+            this.MoveFirst();
         }
 
         /// <summary>
@@ -21,11 +22,11 @@ namespace DataGridViewPagination
         /// <returns>Return the new index</returns>
         public bool MoveNext()
         {
-            if (this.HasNext)                   // Check is there is more records
+            if (this.HasNext)                           // Check is there is more records
             {
                 ++_page;
 
-                if (this.PageChanged != null)   // Make sure the event exists
+                if (this.PageChanged != null)           // Make sure the event exists
                 {
                     // Run this event
                     this.PageChanged(this, new PageChangedEventArgs(_page));
@@ -43,11 +44,11 @@ namespace DataGridViewPagination
         /// <returns>Return the new index</returns>
         public bool MovePrevious()
         {
-            if (this.HasPrevious)               // Check if there are previous records
+            if (this.HasPrevious)                       // Check if there are previous records
             {
                 --_page;
 
-                if (this.PageChanged != null)   // Make sure the event exists
+                if (this.PageChanged != null)           // Make sure the event exists
                 {
                     // Run this event
                     this.PageChanged(this, new PageChangedEventArgs(_page));
@@ -67,9 +68,9 @@ namespace DataGridViewPagination
         {
             if (_dataTable.Rows.Count > 0)
             {
-                _page = 0;                      // Move to the first index
+                _page = 0;                              // Move to the first index
 
-                if (this.PageChanged != null)   // Make sure the event exists
+                if (this.PageChanged != null)           // Make sure the event exists
                 {
                     // Run this event
                     this.PageChanged(this, new PageChangedEventArgs(_page));
@@ -89,12 +90,12 @@ namespace DataGridViewPagination
         {
             if (_dataTable.Rows.Count > 0)
             {
-                _page = _dataTable.Rows.Count / _pageSize;  // Move to the last index
+                _page = this.TotalPages - 1;            // Move to the last index
 
                 // If the total records is divisible by the page size, the user can get to page [TotalPage] + 1
                 if (_dataTable.Rows.Count % _pageSize == 0) _page--;
 
-                if (this.PageChanged != null)               // Make sure the event exists
+                if (this.PageChanged != null)           // Make sure the event exists
                 {
                     // Run this event
                     this.PageChanged(this, new PageChangedEventArgs(_page));
@@ -115,7 +116,7 @@ namespace DataGridViewPagination
         {
             int newPage = 0;
 
-            if (!Int32.TryParse(n, out newPage))      // Saves the page number as an integer if it can
+            if (!Int32.TryParse(n, out newPage))        // Saves the page number as an integer if it can
                 throw new DataGridViewPaginationAdapterException("The inputted value is invalid");
 
             return this.MoveTo(--newPage);
@@ -129,11 +130,11 @@ namespace DataGridViewPagination
         public bool MoveTo(int n)
         {
             if (n > -1 && n < this.TotalPages)
-                _page = n;                            // Set the adapter to the specified record
+                _page = n;                              // Set the adapter to the specified record
             else
                 throw new DataGridViewPaginationAdapterException("The inputted value is out of range");
 
-            if (this.PageChanged != null)             // Make sure the event exists
+            if (this.PageChanged != null)               // Make sure the event exists
             {
                 // Run this event
                 this.PageChanged(this, new PageChangedEventArgs(_page));
@@ -149,16 +150,16 @@ namespace DataGridViewPagination
         /// <returns>Returns a DataTable filled with this page's data</returns>
         public DataTable GetPage(int page)
         {
-            DataTable newTable = _dataTable.Copy();         // Creates a copy of the table so the schema is the same
-            newTable.Rows.Clear();                          // Empties the table, leaving just the fields
+            DataTable newTable = _dataTable.Copy();     // Creates a copy of the table so the schema is the same
+            newTable.Rows.Clear();                      // Empties the table, leaving just the fields
 
-            int size = this.GetPageSize();                  // Figure out how many records are on this page
+            int size = this.GetPageSize();              // Figure out how many records are on this page
 
             // Start the index at the current page * the page size (e.g. page 3 * page size 100 = record 300), and loop through
             // another [size] amount of records (e.g. start at record 300, loop through another 100 records. End at record 400)
             for (int i = page * _pageSize; i < page * _pageSize + size; i++)
             {
-                newTable.ImportRow(_dataTable.Rows[i]);     // Add the record from the original datatable to the new table
+                newTable.ImportRow(_dataTable.Rows[i]); // Add the record from the original datatable to the new table
             }
 
             return newTable;
@@ -228,9 +229,9 @@ namespace DataGridViewPagination
         /// <summary>
         /// Gets the total number of pages
         /// </summary>
-        public double TotalPages
+        public int TotalPages
         {
-            get { return Math.Ceiling(_dataTable.Rows.Count * 1.0 / _pageSize); }
+            get { return _dataTable.Rows.Count / _pageSize + 1; }
         }
 
         public event PageChangedEventHandler PageChanged;
