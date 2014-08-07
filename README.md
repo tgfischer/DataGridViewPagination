@@ -24,7 +24,7 @@ private void adapter_PageChanged(object sender, PageChangedEventArgs e)
   // DataTable to hold all of this page's data
   DataTable dataTable = this.adapter.GetPage(this.adapter.CurrentPage);
   
-  // Display the dats in the DataGridView
+  // Display the data in the DataGridView
   this.dataGridView.DataSource = dataTable.AsDataView();
   
   bool hasNext = this.adapter.HasNext;        // Check for a proceeding page
