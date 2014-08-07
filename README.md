@@ -1,9 +1,9 @@
 DataGridViewPagination
 ======================
 
-This creates pagination functionality for WinForm's DataGridView. It allows you to move through the pages by  ```Button``` controls.
+This creates pagination functionality for WinForm's ```DataGridView```. It allows you to move through the pages by  ```Button``` controls. 
 
-The first step is to set up the ```DataGridViewPaginationAdapter``` in your form. In my example form, I do this in the constructor
+The first step is to add a ```DataGridView``` control to your form like how you normally would. Then, set up the ```DataGridViewPaginationAdapter``` in your form. In my example form, I do this in the constructor
 
 ```c#
 // Sets up an adapter with a DataTable
@@ -38,7 +38,7 @@ private void adapter_PageChanged(object sender, PageChangedEventArgs e)
 }
 ```
 
-You can use the ```DataGridViewPaginationAdapter``` to move to another page, like so
+You can then use the ```DataGridViewPaginationAdapter``` to move to another page, like so
 
 ```c#
 private void lastButton_Click(object sender, EventArgs e)
@@ -62,4 +62,4 @@ private void firstButton_Click(object sender, EventArgs e)
 }
 ```
 
-You can also add a ```TextBox``` that shows what page the user is on, and it is editable so the user can jump to other pages. I have also included an example of a label that displays the total number of pages in the ```DataGridView```
+I have also included an example of an editable ```TextBox``` that shows what page the user is on. This can be used to jump to another page. An example of a label that displays the total number of pages in the ```DataGridView``` is also shown.
