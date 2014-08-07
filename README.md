@@ -27,8 +27,8 @@ private void adapter_PageChanged(object sender, PageChangedEventArgs e)
   // Display the dats in the DataGridView
   this.dataGridView.DataSource = dataTable.AsDataView();
   
-  bool hasNext = this.adapter.HasNext;        // Check if there is another page after this one
-  bool hasPrev = this.adapter.HasPrevious;    // Check if there is a page before this one
+  bool hasNext = this.adapter.HasNext;        // Check for a proceeding page
+  bool hasPrev = this.adapter.HasPrevious;    // Check for a preceding page
   
   // Enable/disable the buttons depending on the page number
   this.nextButton.Enabled = hasNext;
