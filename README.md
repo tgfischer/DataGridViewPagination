@@ -1,4 +1,4 @@
-DataGridViewPagination
+DataGridView Pagination
 ======================
 
 This creates pagination functionality for WinForm's ```DataGridView```. It allows you to move through the pages by  ```Button``` controls. 
